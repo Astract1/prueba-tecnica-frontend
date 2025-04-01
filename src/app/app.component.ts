@@ -2,10 +2,7 @@ import { Component } from '@angular/core';
 
 @Component({
   selector: 'app-root',
-  imports: [],
-  templateUrl: './app.component.html',
-  styleUrl: './app.component.scss'
+  template: `<app-product-page></app-product-page>`,
+  styles: []
 })
-export class AppComponent {
-  title = 'prueba-tecnica-frontend';
-}
+export class AppComponent { }
