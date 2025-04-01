@@ -1,11 +1,10 @@
 // src/app/ui/molecules/product-form/product-form.component.spec.ts
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { ReactiveFormsModule } from '@angular/forms';
-import { By } from '@angular/platform-browser';
 import { ProductCreateDTO } from '../../../core/domain/product.model';
 import { ButtonComponent } from '../../atoms/button/button.component';
 import { InputFieldComponent } from '../../atoms/input-field/input-field.component';
-import { SelectFieldComponent } from '../../atoms/select-field.component.ts/select-field.component';
+import { SelectFieldComponent } from '../../atoms/select-field/select-field.component';
 import { ProductFormComponent } from './product-form.component';
 
 describe('ProductFormComponent', () => {

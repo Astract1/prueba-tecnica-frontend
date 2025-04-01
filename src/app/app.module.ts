@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { NgModule, CUSTOM_ELEMENTS_SCHEMA} from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
@@ -16,14 +16,16 @@ import { ProductRepositoryFactory } from './infrastructure/factories/product-rep
 // UI - Atoms
 import { ButtonComponent } from './ui/atoms/button/button.component';
 import { InputFieldComponent } from './ui/atoms/input-field/input-field.component';
-import { SelectFieldComponent } from './ui/atoms/select-field.component.ts/select-field.component';
+import { SelectFieldComponent } from './ui/atoms/select-field/select-field.component';
+
 // UI - Molecules
 import { ProductFormComponent } from './ui/molecules/product-form/product-form.component';
-import { ProductFilterComponent } from './ui/molecules/product-form/product-filter.component';
-import { ProductTableComponent } from './ui/molecules/product-form/product-table.component.ts';
+import { ProductFilterComponent } from './ui/molecules/product-filter/product-filter.component';
+import { ProductTableComponent } from './ui/molecules/product-table/product-table.component';
+
 // UI - Organisms & Pages
-import { ProductManagementComponent } from './ui/organismos/product-management/product-management.component';
-import { ProductPageComponent } from './ui/paginas/product-page/product-page.component';
+import { ProductManagementComponent } from './ui/organisms/product-management/product-management.component';
+import { ProductPageComponent } from './ui/pages/product-page/product-page.component';
 
 @NgModule({
   declarations: [

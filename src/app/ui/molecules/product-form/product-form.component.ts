@@ -1,9 +1,21 @@
+import { CommonModule } from '@angular/common';
 import { Component, EventEmitter, Output } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { ProductCategory } from '../../../core/domain/product.model';
+import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
+import { ProductCategory, ProductCreateDTO } from '../../../core/domain/product.model';
+import { ButtonComponent } from '../../atoms/button/button.component';
+import { InputFieldComponent } from '../../atoms/input-field/input-field.component';
+import { SelectFieldComponent } from '../../atoms/select-field/select-field.component';
 
 @Component({
   selector: 'app-product-form',
+  standalone: true,
+  imports: [
+    CommonModule,
+    ReactiveFormsModule,
+    InputFieldComponent,
+    SelectFieldComponent,
+    ButtonComponent
+  ],
   template: `
     <form [formGroup]="productForm" (ngSubmit)="onSubmit()" class="product-form">
       <h3 class="form-title">Agregar Nuevo Producto</h3>
@@ -128,7 +140,7 @@ export class ProductFormComponent {
     }
   }
   
-  markFormGroupTouched(formGroup: FormGroup) {
+  private markFormGroupTouched(formGroup: FormGroup) {
     Object.values(formGroup.controls).forEach(control => {
       control.markAsTouched();
       if ((control as FormGroup).controls) {
