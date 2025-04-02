@@ -85,7 +85,7 @@ Se implementa el patrón Atomic Desing usado para organizar los componentes.
 |Jasmine| Para Pruebas |~5.6.0|
 |TypeScript| Lenguaje de programación|~5.7.2|
 
-#Requisitos del sistemas
+# Requisitos del sistemas
 
 |Programa| Versión|
 |-------|---------|
@@ -93,9 +93,36 @@ Se implementa el patrón Atomic Desing usado para organizar los componentes.
 |NPM|11.2.0|
 |Angular CLI|19.2.5|
 
-#Instalación
+# Instalación
 
-    1. Clonar el repositorio
+1. Clonar el repositorio
+
+    ```bash
+    git clone https://github.com/Astract1/prueba-tecnica-frontend.git
+    cd prueba-tecnica-frontend
+    ```
+
+2. Instalar las dependencias
+
+    ```bash
+    npm install
+    ```
+
+3. Iniciar el servidor
+
+    ```bash
+    ng serve --open
+    ```
+
+## Ejecución de Pruebas
+
+Ejecutar pruebas unitarias
+
+    ```bash
+    ng test
+    ```
+
+
 ```bash
     git clone https://github.com/Astract1/prueba-tecnica-frontend.git
     cd prueba-tecnica-frontend
@@ -105,8 +132,8 @@ Se implementa el patrón Atomic Desing usado para organizar los componentes.
  ```bash
    npm install
 ```
-
-    3. Iniciar el servidor 
+3. Iniciar el servidor 
+    
  ```bash
    ng server --open
 ```
