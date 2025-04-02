@@ -95,12 +95,12 @@ Se implementa el patrón Atomic Desing usado para organizar los componentes.
 
 # Instalación
 
-1. Clonar el repositorio
+1. Clonar el repositorio del proyecto:
 
-    ```bash
-    git clone https://github.com/Astract1/prueba-tecnica-frontend.git
-    cd prueba-tecnica-frontend
-    ```
+   ```bash
+   git clone https://github.com/Astract1/prueba-tecnica-frontend.git
+   cd prueba-tecnica-frontend
+   ```
 
 2. Instalar las dependencias
 
@@ -118,22 +118,26 @@ Se implementa el patrón Atomic Desing usado para organizar los componentes.
 
 Ejecutar pruebas unitarias
 
-    ```bash
-    ng test
-    ```
+```bash
+ng test
+```
 
+1. Clonar el repositorio
 
 ```bash
-    git clone https://github.com/Astract1/prueba-tecnica-frontend.git
-    cd prueba-tecnica-frontend
+git clone https://github.com/Astract1/prueba-tecnica-frontend.git
+cd prueba-tecnica-frontend
 ```
-    2. Instalar las dependencias
+
+2. Instalar las dependencias
 
  ```bash
    npm install
 ```
+
 3. Iniciar el servidor 
     
+
  ```bash
    ng server --open
 ```
@@ -142,10 +146,10 @@ Ejecutar pruebas unitarias
 ## Ejecución de Pruebas
 
 Ejecutar pruebas unitarias
-
  ```bash
    ng test
 ```
+
 ## Estructura del proyecto
 
 ```src/
