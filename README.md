@@ -48,7 +48,7 @@ Implementación de los adaptadores que conectan al `Core` con el mundo exterior.
 
 - **Adapters**:
     - `InMemoryProductRepositoryAdapter`: Crea las instancias de los repositorios
-    - Tambien almacena los datos en la memoria para el desarrollo y pruebas, (Es decir al momentos de Cerrar el programa se pierde la info)
+    - También almacena los datos en la memoria para el desarrollo y pruebas, (Es decir al momento de cerrar el programa se pierde la info)
 
 - **Factories**: 
     - `ProductRepositoryFactory`: Crea las instancias de los repositorios.
@@ -80,7 +80,7 @@ Se implementa el patrón Atomic Desing usado para organizar los componentes.
 
 |Tecnologias|Función|Versión|
 |-----------|-------|-------|
-|Angular| Framekork Principal| 19.2.0|
+|Angular| Framework Principal| 19.2.0|
 |RxJS|Para la programación Reactiva|~7.8.0|
 |Jasmine| Para Pruebas |~5.6.0|
 |TypeScript| Lenguaje de programación|~5.7.2|
