@@ -1,9 +1,14 @@
 import { Component } from '@angular/core';
+import { CommonModule } from '@angular/common';
+import { ProductManagementComponent } from '../../organisms/product-management/product-management.component';
 
 @Component({
   selector: 'app-product-page',
+  standalone: true,
+  imports: [CommonModule, ProductManagementComponent],
   template: `
     <div class="page-container">
+      <!-- Encabezado de la página -->
       <header class="header">
         <div class="container">
           <h1 class="app-title">Gestión de Productos</h1>
@@ -11,15 +16,17 @@ import { Component } from '@angular/core';
         </div>
       </header>
       
+      <!-- Contenido principal que incluye la gestión de productos -->
       <main class="main-content">
         <div class="container">
           <app-product-management></app-product-management>
         </div>
       </main>
       
+      <!-- Pie de página o Footer -->
       <footer class="footer">
         <div class="container">
-          <p>© 2025 - Aplicación de Gestión de Productos con Arquitectura Hexagonal</p>
+          <p>Prueba de modulo</p>
         </div>
       </footer>
     </div>

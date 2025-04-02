@@ -7,6 +7,7 @@ import { ProductRepositoryPort } from "../ports/repositories/product-repository.
 
 // Este caso de uso se encarga de agregar un producto a la base de datos
 // y de devolver el producto agregado. Se usa en el componente de agregar producto
+
 @Injectable()
 
 export class AddProductUseCase {

@@ -8,7 +8,10 @@ import { ControlValueAccessor, FormsModule, NG_VALUE_ACCESSOR, ReactiveFormsModu
   imports: [CommonModule, FormsModule, ReactiveFormsModule],
   template: `
     <div class="input-container">
+      <!-- Etiqueta opcional para el campo de entrada -->
       <label *ngIf="label" [for]="id" class="label">{{ label }}</label>
+
+      <!-- Campo de entrada con binding bidireccional -->
       <input
         [id]="id"
         [type]="type"
@@ -18,6 +21,8 @@ import { ControlValueAccessor, FormsModule, NG_VALUE_ACCESSOR, ReactiveFormsModu
         (input)="onInputChange($event)"
         class="input-field"
       />
+
+      <!-- Mensaje de error opcional -->
       <div *ngIf="errorMessage" class="error-message">{{ errorMessage }}</div>
     </div>
   `,
@@ -58,37 +63,45 @@ import { ControlValueAccessor, FormsModule, NG_VALUE_ACCESSOR, ReactiveFormsModu
   ]
 })
 export class InputFieldComponent implements ControlValueAccessor {
-  @Input() id = '';
-  @Input() label = '';
-  @Input() type = 'text';
-  @Input() placeholder = '';
-  @Input() errorMessage = ''; // Eliminado el operador opcional para mantener consistencia
-  @Input() disabled = false;
-  
-  value = '';
+  // Propiedades de entrada configurables
+  @Input() id = '';  // Identificador único del campo
+  @Input() label = '';  // Etiqueta del campo de entrada
+  @Input() type = 'text';  // Tipo de input (text, password, email, etc.)
+  @Input() placeholder = '';  // Texto de marcador de posición
+  @Input() errorMessage = '';  // Mensaje de error opcional
+  @Input() disabled = false;  // Controla si el campo está deshabilitado
+
+  value = ''; // Valor actual del campo
+
+  // Funciones de callback para la integración con formularios reactivos
   onChange: any = () => {};
   onTouched: any = () => {};
-  
+
+  // Escribe un valor en el campo de entrada
   writeValue(value: any): void {
     this.value = value || '';
   }
-  
+
+  // Registra una función que se ejecuta cuando el valor cambia
   registerOnChange(fn: any): void {
     this.onChange = fn;
   }
-  
+
+  // Registra una función que se ejecuta cuando el campo pierde el foco
   registerOnTouched(fn: any): void {
     this.onTouched = fn;
   }
-  
+
+  // Establece si el campo debe estar deshabilitado
   setDisabledState(isDisabled: boolean): void {
     this.disabled = isDisabled;
   }
-  
+
+  // Método que maneja el cambio de valor en el input
   onInputChange(event: Event): void {
     const value = (event.target as HTMLInputElement).value;
-    this.writeValue(value);
-    this.onChange(value);
-    this.onTouched();
+    this.writeValue(value); // Actualiza el valor interno
+    this.onChange(value); // Notifica el cambio a Angular Forms
+    this.onTouched(); // Marca el campo como tocado
   }
 }

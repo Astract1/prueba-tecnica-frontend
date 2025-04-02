@@ -1,8 +1,11 @@
 import { Component, Input } from '@angular/core';
+import { CommonModule } from '@angular/common';
 import { Product } from '../../../core/domain/product.model';
 
 @Component({
   selector: 'app-product-table',
+  standalone: true,
+  imports: [CommonModule],
   template: `
     <div class="table-container">
       <table class="product-table">
@@ -15,7 +18,7 @@ import { Product } from '../../../core/domain/product.model';
           </tr>
         </thead>
         <tbody>
-          <tr *ngFor="let product of products">
+          <tr *ngFor="let product of products || []">
             <td>{{ product.name }}</td>
             <td>{{ product.description }}</td>
             <td>{{ product.price | currency }}</td>
@@ -23,7 +26,7 @@ import { Product } from '../../../core/domain/product.model';
           </tr>
         </tbody>
       </table>
-      <div *ngIf="products.length === 0" class="empty-state">
+      <div *ngIf="!products || products.length === 0" class="empty-state">
         No hay productos disponibles.
       </div>
     </div>
@@ -62,5 +65,5 @@ import { Product } from '../../../core/domain/product.model';
   `]
 })
 export class ProductTableComponent {
-  @Input() products: Product[] = [];
+  @Input() products: Product[] | null = [];
 }

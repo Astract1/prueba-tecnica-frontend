@@ -8,7 +8,10 @@ import { ControlValueAccessor, FormsModule, NG_VALUE_ACCESSOR, ReactiveFormsModu
   imports: [CommonModule, FormsModule, ReactiveFormsModule],
   template: `
     <div class="select-container">
+      <!-- Etiqueta del campo de selección (opcional) -->
       <label *ngIf="label" [for]="id" class="label">{{ label }}</label>
+      
+      <!-- Menú desplegable con opciones dinámicas -->
       <select
         [id]="id"
         [value]="value"
@@ -16,11 +19,16 @@ import { ControlValueAccessor, FormsModule, NG_VALUE_ACCESSOR, ReactiveFormsModu
         (change)="onSelectChange($event)"
         class="select-field"
       >
+        <!-- Opción por defecto si se proporciona un placeholder -->
         <option value="" *ngIf="placeholder">{{ placeholder }}</option>
+        
+        <!-- Iteración sobre la lista de opciones -->
         <option *ngFor="let option of options" [value]="option.value">
           {{ option.label }}
         </option>
       </select>
+
+      <!-- Mensaje de error opcional -->
       <div *ngIf="errorMessage" class="error-message">{{ errorMessage }}</div>
     </div>
   `,
@@ -62,37 +70,45 @@ import { ControlValueAccessor, FormsModule, NG_VALUE_ACCESSOR, ReactiveFormsModu
   ]
 })
 export class SelectFieldComponent implements ControlValueAccessor {
-  @Input() id = '';
-  @Input() label = '';
-  @Input() placeholder = '';
-  @Input() options: { value: string; label: string }[] = [];
-  @Input() errorMessage = '';
-  @Input() disabled = false;
+  // Propiedades de entrada para configurar el componente
+  @Input() id = '';  // Identificador único del campo
+  @Input() label = '';  // Texto de la etiqueta
+  @Input() placeholder = '';  // Texto de marcador de posición
+  @Input() options: { value: string; label: string }[] = [];  // Lista de opciones disponibles
+  @Input() errorMessage = '';  // Mensaje de error a mostrar
+  @Input() disabled = false;  // Estado de habilitado/deshabilitado
 
-  value = '';
+  value = ''; // Valor seleccionado en el campo
+
+  // Funciones de callback para la comunicación con formularios reactivos
   onChange: any = () => {};
   onTouched: any = () => {};
 
+  // Método para escribir el valor en el campo (implementado desde ControlValueAccessor)
   writeValue(value: any): void {
     this.value = value || '';
   }
 
+  // Método para registrar una función que se ejecutará cuando el valor cambie
   registerOnChange(fn: any): void {
     this.onChange = fn;
   }
 
+  // Método para registrar una función que se ejecutará cuando el campo pierda el foco
   registerOnTouched(fn: any): void {
     this.onTouched = fn;
   }
 
+  // Método para establecer si el campo debe estar deshabilitado
   setDisabledState(isDisabled: boolean): void {
     this.disabled = isDisabled;
   }
 
+  // Método ejecutado cuando el usuario selecciona una opción
   onSelectChange(event: Event): void {
     const value = (event.target as HTMLSelectElement).value;
-    this.writeValue(value);
-    this.onChange(value);
-    this.onTouched();
+    this.writeValue(value); // Actualiza el valor localmente
+    this.onChange(value); // Notifica el cambio a Angular Forms
+    this.onTouched(); // Marca el campo como tocado
   }
 }

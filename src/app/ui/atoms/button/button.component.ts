@@ -46,11 +46,19 @@ import { Component, Input, Output, EventEmitter } from '@angular/core';
   `]
 })
 export class ButtonComponent {
+  // Texto del botón
   @Input() label = '';
+
+  // Define si el botón está deshabilitado
   @Input() disabled = false;
+
+  // Variante del botón (estilo CSS: 'primary' o 'secondary')
   @Input() variant: 'primary' | 'secondary' = 'primary';
+
+  // Evento que se emite cuando el botón es presionado
   @Output() onClick = new EventEmitter<Event>();
 
+  // Método para obtener la clase CSS correspondiente al tipo de botón
   get buttonClass(): string {
     return this.variant;
   }

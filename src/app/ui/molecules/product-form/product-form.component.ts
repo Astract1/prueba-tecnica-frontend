@@ -6,6 +6,12 @@ import { ButtonComponent } from '../../atoms/button/button.component';
 import { InputFieldComponent } from '../../atoms/input-field/input-field.component';
 import { SelectFieldComponent } from '../../atoms/select-field/select-field.component';
 
+/**
+ * Componente de formulario para agregar un nuevo producto.
+ * Permite ingresar el nombre, descripción, precio y categoría del producto.
+ * Implementa validaciones para asegurar la entrada correcta de datos.
+ * Al enviar el formulario, emite un evento con la información del producto creado.
+ */
 @Component({
   selector: 'app-product-form',
   standalone: true,
@@ -20,6 +26,7 @@ import { SelectFieldComponent } from '../../atoms/select-field/select-field.comp
     <form [formGroup]="productForm" (ngSubmit)="onSubmit()" class="product-form">
       <h3 class="form-title">Agregar Nuevo Producto</h3>
       
+      <!-- Campo de entrada para el nombre del producto -->
       <app-input-field
         id="name"
         label="Nombre"
@@ -28,6 +35,7 @@ import { SelectFieldComponent } from '../../atoms/select-field/select-field.comp
         [errorMessage]="getErrorMessage('name')"
       ></app-input-field>
       
+      <!-- Campo de entrada para la descripción del producto -->
       <app-input-field
         id="description"
         label="Descripción"
@@ -36,6 +44,7 @@ import { SelectFieldComponent } from '../../atoms/select-field/select-field.comp
         [errorMessage]="getErrorMessage('description')"
       ></app-input-field>
       
+      <!-- Campo de entrada para el precio del producto -->
       <app-input-field
         id="price"
         type="number"
@@ -45,6 +54,7 @@ import { SelectFieldComponent } from '../../atoms/select-field/select-field.comp
         [errorMessage]="getErrorMessage('price')"
       ></app-input-field>
       
+      <!-- Selector para la categoría del producto -->
       <app-select-field
         id="category"
         label="Categoría"
@@ -54,6 +64,7 @@ import { SelectFieldComponent } from '../../atoms/select-field/select-field.comp
         [errorMessage]="getErrorMessage('category')"
       ></app-select-field>
       
+      <!-- Botón para enviar el formulario -->
       <div class="form-actions">
         <app-button
           label="Agregar Producto"
@@ -82,10 +93,13 @@ import { SelectFieldComponent } from '../../atoms/select-field/select-field.comp
   `]
 })
 export class ProductFormComponent {
+  /** Evento que emite los datos del nuevo producto al enviarse el formulario */
   @Output() addProduct = new EventEmitter<ProductCreateDTO>();
   
+  /** Formulario reactivo para manejar la entrada de datos del producto */
   productForm: FormGroup;
   
+  /** Opciones disponibles para la selección de categoría del producto */
   categoryOptions = [
     { value: ProductCategory.ELECTRONICS, label: 'Electrónica' },
     { value: ProductCategory.BOOKS, label: 'Libros' },
@@ -94,6 +108,7 @@ export class ProductFormComponent {
   ];
   
   constructor(private fb: FormBuilder) {
+    /** Inicialización del formulario con validaciones */
     this.productForm = this.fb.group({
       name: ['', [Validators.required, Validators.minLength(3)]],
       description: ['', [Validators.required, Validators.minLength(10)]],
@@ -102,6 +117,9 @@ export class ProductFormComponent {
     });
   }
   
+  /**
+   * Obtiene el mensaje de error correspondiente a un campo del formulario.
+   */
   getErrorMessage(field: string): string {
     if (!this.productForm.get(field)?.errors || 
         !this.productForm.get(field)?.touched) {
@@ -126,6 +144,10 @@ export class ProductFormComponent {
     return 'Valor inválido';
   }
   
+  /**
+   * Maneja el evento de envío del formulario.
+   * Si el formulario es válido, emite el evento con los datos del producto y lo reinicia.
+   */
   onSubmit(): void {
     if (this.productForm.valid) {
       this.addProduct.emit(this.productForm.value);
@@ -140,6 +162,9 @@ export class ProductFormComponent {
     }
   }
   
+  /**
+   * Marca todos los campos del formulario como tocados para mostrar errores de validación.
+   */
   private markFormGroupTouched(formGroup: FormGroup) {
     Object.values(formGroup.controls).forEach(control => {
       control.markAsTouched();
