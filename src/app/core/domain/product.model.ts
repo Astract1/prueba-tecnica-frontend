@@ -14,8 +14,8 @@ export interface Product {
   
   // Categorías de productos disponibles (Enum)
   export enum ProductCategory {
-    ELECTRONICS = 'Electronics',
-    BOOKS = 'Books',
-    CLOTHING = 'Clothing',
-    FOOD = 'Food'
+    ELECTRONICS = 'Electronicos',
+    BOOKS = 'Libros',
+    CLOTHING = 'Ropa',
+    FOOD = 'Comida'
   }

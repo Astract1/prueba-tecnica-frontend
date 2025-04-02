@@ -23,13 +23,6 @@ import { ProductManagementComponent } from '../../organisms/product-management/p
         </div>
       </main>
       
-      <!-- Pie de página o Footer -->
-      <footer class="footer">
-        <div class="container">
-          <p>Prueba de modulo</p>
-        </div>
-      </footer>
-    </div>
   `,
   styles: [`
     .page-container {

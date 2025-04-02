@@ -23,13 +23,13 @@ describe('ProductFormComponent', () => {
    */
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [
+      imports: [
+        ReactiveFormsModule,
         ProductFormComponent,
         InputFieldComponent,
         SelectFieldComponent,
         ButtonComponent
-      ],
-      imports: [ReactiveFormsModule]
+      ]
     }).compileComponents();
   });
 
